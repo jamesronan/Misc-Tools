@@ -17,7 +17,8 @@ Getopt::Long::GetOptions(
 my $xrandr = `which xrandr`;
 chomp $xrandr;
 if (!$xrandr) {
-    print "Unable to locate XRANDR - maybe you forgot to install it?";
+    print "Unable to locate XRANDR - maybe you forgot to install it?"
+        if $options{v};
     exit;
 }
 
@@ -56,7 +57,7 @@ print "Got monitors: \n" . Data::Dump::dump(\%monitors) . "\n"
 
 # If there is only one monitor connected, then we need not take action.
 if (scalar keys %monitors <= 1) {
-    print "Only one monitor found. Doing nothing\n";
+    print "Only one monitor found. Doing nothing\n" if $options{v};
     exit;
 }
 
