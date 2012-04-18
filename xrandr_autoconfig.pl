@@ -65,7 +65,7 @@ if (scalar keys %monitors <= 1) {
 my $disposition = ($options{f}) ? '--right-of' : '--left-of';
 
 # Order the displays, backwards if the flip flag was spcified
-my @displays = keys %monitors;
+my @displays = sort keys %monitors;
 if ($options{f}) {
     @displays = reverse @displays;
 }
